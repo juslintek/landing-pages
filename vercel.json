@@ -1,0 +1,11 @@
+{
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/delivery", "destination": "/delivery/index.html" },
+    { "source": "/health", "destination": "/health/index.html" },
+    { "source": "/energy", "destination": "/energy/index.html" },
+    { "source": "/deepfake", "destination": "/deepfake/index.html" }
+  ]
+}
