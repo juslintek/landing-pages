@@ -1,5 +1,3 @@
-const WORKER_URL = "https://venture-landing.YOUR_SUBDOMAIN.workers.dev";
-
 async function join(venture) {
   const input = document.getElementById("email");
   const msg = document.getElementById("msg");
@@ -15,7 +13,7 @@ async function join(venture) {
   msg.textContent = "Joining…";
 
   try {
-    const res = await fetch(`${WORKER_URL}/waitlist`, {
+    const res = await fetch("/api/waitlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, venture }),
