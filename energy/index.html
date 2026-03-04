@@ -1,83 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GridNeighbor — Share energy with your neighbors</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GridShare — P2P energy sharing simulator</title>
+  <link rel="stylesheet" href="../_shared/style.css">
+  <style>:root { --accent: #a78bfa; }</style>
 </head>
-<body class="bg-yellow-50 text-gray-900 min-h-screen flex flex-col">
-  <main class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-    <div class="max-w-xl w-full text-center">
-      <span class="inline-block bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">Coming soon</span>
-      <h1 class="text-5xl font-extrabold tracking-tight mb-4">GridNeighbor</h1>
-      <p class="text-xl text-gray-600 mb-10">Share energy with your neighbors. See your savings before going live.</p>
-
-      <ul class="text-left space-y-4 mb-12">
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-yellow-500 text-lg">✦</span>
-          <span>Simulate your neighborhood microgrid and see projected savings before you commit to anything.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-yellow-500 text-lg">✦</span>
-          <span>Sell surplus solar to the house next door — not back to the utility at a fraction of the price.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-yellow-500 text-lg">✦</span>
-          <span>No hardware changes needed. Works with your existing panels and meter.</span>
-        </li>
-      </ul>
-
-      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="your@email.com"
-          class="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-base"
-        />
-        <button
-          type="submit"
-          class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-base"
-        >
-          Join waitlist
-        </button>
-      </form>
-      <p id="form-msg" class="mt-3 text-sm text-gray-500 hidden"></p>
+<body>
+  <nav><a href="../">← All ventures</a></nav>
+  <main>
+    <span class="badge" style="color:#a78bfa;border-color:#a78bfa">Energy · B2B Pilot</span>
+    <h1>See how much your neighbors could save sharing energy</h1>
+    <p class="sub">GridShare simulates peer-to-peer energy trading within your community — showing real savings potential before any live trading begins.</p>
+    <ul class="features">
+      <li>Synthetic + real consumption profile simulation</li>
+      <li>Neighbor-to-neighbor savings calculator</li>
+      <li>Peak load reduction visualization</li>
+      <li>Compliant with EU Energy Community framework</li>
+    </ul>
+    <div class="waitlist">
+      <h2>Request a pilot report</h2>
+      <p>We'll run a free simulation for your energy community or housing cooperative.</p>
+      <div class="form-row">
+        <input type="email" id="email" placeholder="your@email.com">
+        <button onclick="join('energy')">Request pilot</button>
+      </div>
+      <div id="msg"></div>
     </div>
   </main>
-
-  <footer class="text-center text-sm text-gray-400 py-6">
-    Early access — no spam
-  </footer>
-
-  <script>
-    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const msg = document.getElementById('form-msg');
-      try {
-        const res = await fetch('https://waitlist.pages.dev/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, venture: 'gridneighbor' }),
-        });
-        const data = await res.json();
-        if (data.ok) {
-          msg.textContent = "You're on the list. We'll be in touch.";
-          msg.classList.remove('hidden', 'text-red-500');
-          msg.classList.add('text-green-600');
-          e.target.reset();
-        } else {
-          throw new Error();
-        }
-      } catch {
-        msg.textContent = 'Something went wrong. Try again.';
-        msg.classList.remove('hidden', 'text-green-600');
-        msg.classList.add('text-red-500');
-      }
-      msg.classList.remove('hidden');
-    });
-  </script>
+  <footer>GridShare · Grid efficiency software · Not a crypto project</footer>
+  <script src="../_shared/waitlist.js"></script>
 </body>
 </html>

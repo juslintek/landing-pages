@@ -1,83 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TruthLayer — Know if what you're reading is real</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrustLayer — Verify before you share</title>
+  <link rel="stylesheet" href="../_shared/style.css">
+  <style>:root { --accent: #38bdf8; }</style>
 </head>
-<body class="bg-slate-50 text-gray-900 min-h-screen flex flex-col">
-  <main class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-    <div class="max-w-xl w-full text-center">
-      <span class="inline-block bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">Coming soon</span>
-      <h1 class="text-5xl font-extrabold tracking-tight mb-4">TruthLayer</h1>
-      <p class="text-xl text-gray-600 mb-10">Know if what you're reading is real. Instant source credibility check.</p>
-
-      <ul class="text-left space-y-4 mb-12">
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-slate-500 text-lg">✦</span>
-          <span>One click scores any article, image, or video against thousands of verified sources.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-slate-500 text-lg">✦</span>
-          <span>Detects AI-generated content and deepfakes before you share something you'll regret.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-slate-500 text-lg">✦</span>
-          <span>Works as a browser extension — no copy-pasting, no switching tabs.</span>
-        </li>
-      </ul>
-
-      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="your@email.com"
-          class="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-slate-400 text-base"
-        />
-        <button
-          type="submit"
-          class="bg-slate-700 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-base"
-        >
-          Join waitlist
-        </button>
-      </form>
-      <p id="form-msg" class="mt-3 text-sm text-gray-500 hidden"></p>
+<body>
+  <nav><a href="../">← All ventures</a></nav>
+  <main>
+    <span class="badge" style="color:#38bdf8;border-color:#38bdf8">Media · Browser Extension</span>
+    <h1>Know what's real before you share it</h1>
+    <p class="sub">TrustLayer adds a credibility layer to every link you see — source scores, deepfake signals, and cited reasoning. Works in your browser and on Telegram.</p>
+    <ul class="features">
+      <li>Instant source credibility score on every link</li>
+      <li>Deepfake probability for images (Phase 2)</li>
+      <li>Telegram bot — send any URL, get a report</li>
+      <li>Platform-independent — works everywhere</li>
+    </ul>
+    <div class="waitlist">
+      <h2>Get early access</h2>
+      <p>First release for Chrome. Journalists, educators, and fact-checkers welcome.</p>
+      <div class="form-row">
+        <input type="email" id="email" placeholder="your@email.com">
+        <button onclick="join('deepfake')">Join waitlist</button>
+      </div>
+      <div id="msg"></div>
     </div>
   </main>
-
-  <footer class="text-center text-sm text-gray-400 py-6">
-    Early access — no spam
-  </footer>
-
-  <script>
-    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const msg = document.getElementById('form-msg');
-      try {
-        const res = await fetch('https://waitlist.pages.dev/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, venture: 'truthlayer' }),
-        });
-        const data = await res.json();
-        if (data.ok) {
-          msg.textContent = "You're on the list. We'll be in touch.";
-          msg.classList.remove('hidden', 'text-red-500');
-          msg.classList.add('text-green-600');
-          e.target.reset();
-        } else {
-          throw new Error();
-        }
-      } catch {
-        msg.textContent = 'Something went wrong. Try again.';
-        msg.classList.remove('hidden', 'text-green-600');
-        msg.classList.add('text-red-500');
-      }
-      msg.classList.remove('hidden');
-    });
-  </script>
+  <footer>TrustLayer · User-side trust layer · Platform-independent</footer>
+  <script src="../_shared/waitlist.js"></script>
 </body>
 </html>

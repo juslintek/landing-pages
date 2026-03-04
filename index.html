@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4 Ventures — 90-day build</title>
+  <link rel="stylesheet" href="_shared/style.css">
+  <style>
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 48px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-decoration: none; color: var(--text); display: block; transition: border-color .15s; }
+    .card:hover { border-color: var(--card-accent, #555); }
+    .card-badge { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .card h2 { font-size: 18px; margin-bottom: 8px; }
+    .card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .card .arrow { margin-top: 16px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main style="max-width:800px">
+    <span class="badge" style="color:#888;border-color:#333">90-day build · Day 1</span>
+    <h1>4 ventures. 90 days. Zero excuses.</h1>
+    <p class="sub">Building in public. Each concept goes from zero to pilot-ready in 30 days.</p>
+    <div class="grid">
+      <a class="card" href="delivery/" style="--card-accent:#f97316">
+        <div class="card-badge" style="color:#f97316">🚚 Logistics</div>
+        <h2>SwiftDrop</h2>
+        <p>Hyper-local last-mile delivery. Auto-dispatch to couriers. Zero CAPEX.</p>
+        <div class="arrow" style="color:#f97316">Join waitlist →</div>
+      </a>
+      <a class="card" href="health/" style="--card-accent:#22c55e">
+        <div class="card-badge" style="color:#22c55e">🩺 Health</div>
+        <h2>VitalSignal</h2>
+        <p>AI wellness copilot. Daily risk signals from your Apple Health + lab data. 100% local.</p>
+        <div class="arrow" style="color:#22c55e">Join waitlist →</div>
+      </a>
+      <a class="card" href="energy/" style="--card-accent:#a78bfa">
+        <div class="card-badge" style="color:#a78bfa">⚡ Energy</div>
+        <h2>GridShare</h2>
+        <p>P2P energy sharing simulator for communities. See savings before going live.</p>
+        <div class="arrow" style="color:#a78bfa">Request pilot →</div>
+      </a>
+      <a class="card" href="deepfake/" style="--card-accent:#38bdf8">
+        <div class="card-badge" style="color:#38bdf8">🛡 Media</div>
+        <h2>TrustLayer</h2>
+        <p>Browser extension + Telegram bot. Source credibility on every link you see.</p>
+        <div class="arrow" style="color:#38bdf8">Get early access →</div>
+      </a>
+    </div>
+  </main>
+  <footer>Building in public · 2026</footer>
+</body>
+</html>

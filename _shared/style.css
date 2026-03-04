@@ -1,0 +1,145 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --border: #222;
+  --text: #f0f0f0;
+  --muted: #888;
+  --radius: 12px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--text); }
+
+main {
+  flex: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.sub {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: #ccc;
+}
+
+.features li::before {
+  content: "→";
+  color: var(--accent, #888);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.waitlist {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.waitlist h2 { font-size: 18px; margin-bottom: 6px; }
+.waitlist p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+.form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.form-row input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+
+.form-row input:focus { border-color: var(--accent, #555); }
+
+.form-row button {
+  background: var(--accent, #555);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.form-row button:hover { opacity: .85; }
+
+#msg { font-size: 13px; margin-top: 10px; min-height: 18px; }
+
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+  .form-row { flex-direction: column; }
+}

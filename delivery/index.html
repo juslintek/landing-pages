@@ -1,83 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DropLocal — Same-hour delivery for local businesses</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SwiftDrop — Hyper-local delivery, zero CAPEX</title>
+  <link rel="stylesheet" href="../_shared/style.css">
+  <style>:root { --accent: #f97316; }</style>
 </head>
-<body class="bg-orange-50 text-gray-900 min-h-screen flex flex-col">
-  <main class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-    <div class="max-w-xl w-full text-center">
-      <span class="inline-block bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">Coming soon</span>
-      <h1 class="text-5xl font-extrabold tracking-tight mb-4">DropLocal</h1>
-      <p class="text-xl text-gray-600 mb-10">Same-hour delivery for local businesses. No robots, no CAPEX.</p>
-
-      <ul class="text-left space-y-4 mb-12">
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-orange-500 text-lg">✦</span>
-          <span>Dispatch a local courier in minutes — no fleet, no contracts, no upfront cost.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-orange-500 text-lg">✦</span>
-          <span>Real-time tracking your customers actually trust, built for neighborhood scale.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 text-orange-500 text-lg">✦</span>
-          <span>Pay per delivery. Cancel anytime. Your margins stay yours.</span>
-        </li>
-      </ul>
-
-      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="your@email.com"
-          class="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 text-base"
-        />
-        <button
-          type="submit"
-          class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-base"
-        >
-          Join waitlist
-        </button>
-      </form>
-      <p id="form-msg" class="mt-3 text-sm text-gray-500 hidden"></p>
+<body>
+  <nav><a href="../">← All ventures</a></nav>
+  <main>
+    <span class="badge" style="color:#f97316;border-color:#f97316">Logistics · Early Access</span>
+    <h1>Last-mile delivery without the overhead</h1>
+    <p class="sub">SwiftDrop connects local merchants to nearby couriers in minutes — no robots, no CAPEX, no ops team. Just orders moving.</p>
+    <ul class="features">
+      <li>Auto-dispatch to available local couriers via Telegram</li>
+      <li>OSRM-powered routing with live ETA</li>
+      <li>Merchant dashboard — submit, track, done</li>
+      <li>Pay-per-delivery, no monthly fees</li>
+    </ul>
+    <div class="waitlist">
+      <h2>Join the pilot</h2>
+      <p>We're onboarding 5–10 local businesses in one district. Be first.</p>
+      <div class="form-row">
+        <input type="email" id="email" placeholder="your@email.com">
+        <button onclick="join('delivery')">Get early access</button>
+      </div>
+      <div id="msg"></div>
     </div>
   </main>
-
-  <footer class="text-center text-sm text-gray-400 py-6">
-    Early access — no spam
-  </footer>
-
-  <script>
-    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const msg = document.getElementById('form-msg');
-      try {
-        const res = await fetch('https://waitlist.pages.dev/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, venture: 'droplocal' }),
-        });
-        const data = await res.json();
-        if (data.ok) {
-          msg.textContent = "You're on the list. We'll be in touch.";
-          msg.classList.remove('hidden', 'text-red-500');
-          msg.classList.add('text-green-600');
-          e.target.reset();
-        } else {
-          throw new Error();
-        }
-      } catch {
-        msg.textContent = 'Something went wrong. Try again.';
-        msg.classList.remove('hidden', 'text-green-600');
-        msg.classList.add('text-red-500');
-      }
-      msg.classList.remove('hidden');
-    });
-  </script>
+  <footer>SwiftDrop · Pilot launching soon</footer>
+  <script src="../_shared/waitlist.js"></script>
 </body>
 </html>
